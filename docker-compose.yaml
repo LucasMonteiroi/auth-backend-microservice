@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: db_postgres
+    image: postgres
+    env_file:
+      - ./docker/docker.env
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/postgres:/docker-entrypoint-initdb.d/
+      - backend_data:/data/postgres
+    networks:
+      backend-microservices:
+        ipv4_address: 192.168.0.3
+
+  backend-microservice:
+    container_name: nestjs_backend_microservice
+    image: nestjs-backend-microservice:1.0.0
+    build:
+      context: .
+      target: development
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./docker/docker.env
+    command: yarn start:debug
+    ports:
+      - 3000:3000
+      - 9229:9229
+    networks:
+      backend-microservices:
+        ipv4_address: 192.168.0.4
+    volumes:
+      - '.:/app'
+      - './node_modules:/app/node_modules'
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+volumes:
+  backend_data: {}
+
+networks:
+  backend-microservices:
+    name: backend-microservices
+    ipam:
+      config:
+        - subnet: '192.168.0.0/24'
