@@ -1,20 +1,20 @@
-# NestJS Backend Microservice &middot;
+# Auth Backend Microservice 
 
-![GitHub top language](https://img.shields.io/github/languages/top/lucasmonteiroi/nestjs-backend-microservice)
-![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/lucasmonteiroi/nestjs-backend-microservice/staging)
-[![GitHub repo size](https://img.shields.io/github/repo-size/lucasmonteiroi/nestjs-backend-microservice)](https://github.com/LucasMonteiroi/nestjs-backend-microservice)
-![GitHub last commit](https://img.shields.io/github/last-commit/lucasmonteiroi/nestjs-backend-microservice)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lucasmonteiroi/nestjs-backend-microservice/CI)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/LucasMonteiroi/nestjs-backend-microservice/compare)
-![GitHub](https://img.shields.io/github/license/lucasmonteiroi/nestjs-backend-microservice)
+![GitHub top language](https://img.shields.io/github/languages/top/lucasmonteiroi/auth-backend-microservice)
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/lucasmonteiroi/auth-backend-microservice/staging)
+[![GitHub repo size](https://img.shields.io/github/repo-size/lucasmonteiroi/auth-backend-microservice)](https://github.com/LucasMonteiroi/auth-backend-microservice)
+![GitHub last commit](https://img.shields.io/github/last-commit/lucasmonteiroi/auth-backend-microservice)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lucasmonteiroi/auth-backend-microservice/CI)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/LucasMonteiroi/auth-backend-microservice/compare)
+![GitHub](https://img.shields.io/github/license/lucasmonteiroi/auth-backend-microservice)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=bugs)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_nestjs-backend-microservice&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
-[![codecov](https://codecov.io/gh/LucasMonteiroi/nestjs-backend-microservice/branch/develop/graph/badge.svg?token=4ER0O4WDPA)](https://codecov.io/gh/LucasMonteiroi/nestjs-backend-microservice)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=bugs)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=LucasMonteiroi_auth-backend-microservice&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
+[![codecov](https://codecov.io/gh/LucasMonteiroi/auth-backend-microservice/branch/develop/graph/badge.svg?token=4ER0O4WDPA)](https://codecov.io/gh/LucasMonteiroi/auth-backend-microservice)
 
 A backend microservice to make easily the development
 
@@ -117,8 +117,8 @@ What is needed to set up the dev environment. For instance, global dependencies 
 To get the project ready to develop or simple execute to see sample running, follow the below instructions:
 
 ```sh
-git clone https://github.com/LucasMonteiroi/nestjs-backend-microservice.git
-cd nestjs-backend-microservice/
+git clone https://github.com/LucasMonteiroi/auth-backend-microservice.git
+cd auth-backend-microservice/
 
 # Yarn install packages and husky install
 yarn && yarn prepare
@@ -187,7 +187,7 @@ To generate a new version, just run this command passing the type of version `pa
 yarn release patch # minor or major
 ```
 
-This command will update version on `package.json`, generate the [`CHANGELOG.md`](https://github.com/LucasMonteiroi/nestjs-backend-microservice/blob/develop/CHANGELOG.md) based on [CZ Emoji Commits](https://github.com/ngryman/cz-emoji) and push to branch
+This command will update version on `package.json`, generate the [`CHANGELOG.md`](https://github.com/LucasMonteiroi/auth-backend-microservice/blob/develop/CHANGELOG.md) based on [CZ Emoji Commits](https://github.com/ngryman/cz-emoji) and push to branch
 
 ## Configuration
 
@@ -212,8 +212,8 @@ POSTGRES_MULTIPLE_DATABASES=backend_microservice, backend_microservice_testing
 
 ## Licensing
 
-Nest Js Backend Microservice is [MIT licensed](https://github.com/LucasMonteiroi/nestjs-backend-microservice/blob/develop/LICENSE)
+Nest Js Backend Microservice is [MIT licensed](https://github.com/LucasMonteiroi/auth-backend-microservice/blob/develop/LICENSE)
 
 ## Third Party Badges
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_nestjs-backend-microservice)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/summary/new_code?id=LucasMonteiroi_auth-backend-microservice)
