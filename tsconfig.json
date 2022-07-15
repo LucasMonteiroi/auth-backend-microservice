@@ -21,6 +21,7 @@
       "@config": ["src/config"],
       "@environments": ["src/environments"],
       "@health/*": ["src/health/*"],
+      "@modules": ["src/modules"],
       "@shared": ["src/shared"],
       "@utils": ["src/utils"]
     }

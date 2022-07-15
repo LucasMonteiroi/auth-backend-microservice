@@ -7,9 +7,11 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  UseGuards,
   UsePipes,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import JwtAuthGuard from '../../../auth/guards/jwt-auth.guard';
 import { ValidationPipe } from '../../../core/pipes/validation.pipe';
 import { TaskDto } from '../dto/task.dto';
 import Task from '../entities/task.entity';
@@ -29,6 +31,7 @@ export class TasksController {
     type: Task,
   })
   @ApiBody({ type: TaskDto })
+  @UseGuards(JwtAuthGuard)
   public async createTask(@Body() task: TaskDto) {
     return this.taskService.create({
       description: task.description,

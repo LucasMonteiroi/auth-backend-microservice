@@ -16,8 +16,8 @@ services:
         ipv4_address: 192.168.0.3
 
   backend-microservice:
-    container_name: nestjs_backend_microservice
-    image: nestjs-backend-microservice:1.0.0
+    container_name: auth_backend_microservice
+    image: auth-backend-microservice:1.0.0
     build:
       context: .
       target: development
