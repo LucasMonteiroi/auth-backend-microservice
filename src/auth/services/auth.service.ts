@@ -1,16 +1,10 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UsersService } from '../../modules/users/service/users.service';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayload } from '../interfaces/tokenPayload.interface';
 import RegisterDto from '../dto/register.dto';
-import User from '../../modules/users/entity/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -25,7 +19,7 @@ export class AuthService {
     try {
       const createdUser = await this.usersService.create({
         email: registrationData.email,
-        name: registrationData.email,
+        name: registrationData.name,
         password: hashedPassword,
       });
       createdUser.password = undefined;
@@ -59,16 +53,47 @@ export class AuthService {
     }
   }
 
+  public async setCurrentRefreshToken(refreshToken: string, userId: string) {
+    await this.usersService.setCurrentRefreshToken(refreshToken, userId);
+  }
+
   public getCookieWithJwtToken(userId: string) {
     const payload: TokenPayload = { userId };
-    const token = this.jwtService.sign(payload);
+    const token = this.jwtService.sign(payload, {
+      secret: this.configService.get('JWT_SECRET'),
+      expiresIn: `${this.configService.get('JWT_EXPIRATION_TIME')}s`,
+    });
     return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
       'JWT_EXPIRATION_TIME',
     )}`;
   }
 
+  public getCookieWithJwtRefreshToken(userId: string) {
+    const payload: TokenPayload = { userId };
+    const token = this.jwtService.sign(payload, {
+      secret: this.configService.get('JWT_REFRESH_TOKEN_SECRET'),
+      expiresIn: `${this.configService.get(
+        'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
+      )}s`,
+    });
+    const cookie = `Refresh=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
+      'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
+    )}`;
+    return {
+      cookie,
+      token,
+    };
+  }
+
   public getCookieForLogOut() {
-    return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
+    return [
+      'Authentication=; HttpOnly; Path=/; Max-Age=0',
+      'Refresh=; HttpOnly; Path=/; Max-Age=0',
+    ];
+  }
+
+  async removeRefreshToken(userId: string) {
+    await this.usersService.removeRefreshToken(userId);
   }
 
   private async verifyPassword(
